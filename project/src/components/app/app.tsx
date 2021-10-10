@@ -8,7 +8,7 @@ import AddReview from '../add-review/add-review';
 import Player from '../player/player';
 import NotFoundPage from '../not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
-import { AuthorizationStatus } from '../../const';
+import { AuthorizationStatus, AppRoute } from '../../const';
 
 function App({filmInfo}: AppProps): JSX.Element {
   const {
@@ -19,20 +19,20 @@ function App({filmInfo}: AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path='/' exact>
+        <Route path={AppRoute.MainPage} exact>
           <MainPage filmName={name} filmGenre={genre} filmYear={year} />
         </Route>
-        <Route path='/login' exact>
+        <Route path={AppRoute.SignIn} exact>
           <SignIn />
         </Route>
-        <PrivateRoute exact path='/mylist' render={() => <MyList />} authorizationStatus={AuthorizationStatus.NoAuth} />
-        <Route path='/films/:id' exact>
+        <PrivateRoute exact path={AppRoute.MyList} render={() => <MyList />} authorizationStatus={AuthorizationStatus.NoAuth} />
+        <Route path={AppRoute.FilmPage} exact>
           <FilmPage />
         </Route>
-        <Route path='/films/:id/review' exact>
+        <Route path={AppRoute.AddReview} exact>
           <AddReview />
         </Route>
-        <Route path='/player'>
+        <Route path={AppRoute.Player}>
           <Player />
         </Route>
         <Route>
