@@ -3,7 +3,7 @@ import { MainPageProps } from './types';
 import FilmCard from '../film-card/film-card';
 
 const cardsCount = 20;
-const keys = new Array(cardsCount).fill(0).map((_, index) => index);
+const keys = new Array(cardsCount).fill(null).map((_, index) => index);
 
 function MainPage({filmName, filmGenre, filmYear}: MainPageProps):JSX.Element {
   const cards = keys.map((key) => <FilmCard key={key} filmName={filmName} />);
